@@ -3,7 +3,7 @@
   debug: var=dep_completed
 
 - block:
-  - include_tasks: main_run.yml
+  - import_tasks: main_run.yml
   - set_fact: dep_completed=true
   when: not dep_completed|default(false)
 
