@@ -9,6 +9,12 @@ setting up inventory plugins
 Parsed /etc/ansible/hosts inventory source with ini plugin
  [WARNING]: Could not match supplied host pattern, ignoring: all
  [WARNING]: provided hosts list is empty, only localhost is available
+[DEPRECATION WARNING]: The use of 'include' for tasks has been deprecated. Use 'import_tasks' for static inclusions or 'include_tasks' for dynamic inclusions. This feature will be 
+removed in a future release. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+[DEPRECATION WARNING]: include is kept for backwards compatibility but usage is discouraged. The module documentation details page may explain more about this rationale.. This 
+feature will be removed in a future release. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+statically imported: myansibleissue01x/roles/dependency-or-standalone/tasks/main_run.yml
+statically imported: myansibleissue01x/roles/dependency-or-standalone/tasks/main_run.yml
 Loading callback plugin default of type stdout, v2.0 from /home/phil/projects/tmp/ansible/lib/ansible/plugins/callback/__init__.pyc
 
 PLAYBOOK: site.yml
@@ -20,8 +26,8 @@ META: ran handlers
 TASK [dependency-or-standalone : completed roles before run]
 task path: myansibleissue01x/roles/dependency-or-standalone/tasks/main.yml:2
 
-TASK [dependency-or-standalone : include_tasks]
-task path: myansibleissue01x/roles/dependency-or-standalone/tasks/main.yml:6
+TASK [dependency-or-standalone : debug]
+task path: myansibleissue01x/roles/dependency-or-standalone/tasks/main_run.yml:2
 
 TASK [dependency-or-standalone : set_fact]
 task path: myansibleissue01x/roles/dependency-or-standalone/tasks/main.yml:7
@@ -32,8 +38,8 @@ task path: myansibleissue01x/roles/dependency-or-standalone/tasks/main.yml:10
 TASK [dependency-or-standalone : completed roles before run]
 task path: myansibleissue01x/roles/dependency-or-standalone/tasks/main.yml:2
 
-TASK [dependency-or-standalone : include_tasks]
-task path: myansibleissue01x/roles/dependency-or-standalone/tasks/main.yml:6
+TASK [dependency-or-standalone : debug]
+task path: myansibleissue01x/roles/dependency-or-standalone/tasks/main_run.yml:2
 
 TASK [dependency-or-standalone : set_fact]
 task path: myansibleissue01x/roles/dependency-or-standalone/tasks/main.yml:7
@@ -50,12 +56,11 @@ ok: [localhost] => {
     "dep_completed": "VARIABLE IS NOT DEFINED!"
 }
 
-TASK [dependency-or-standalone : include_tasks]
-task path: myansibleissue01x/roles/dependency-or-standalone/tasks/main.yml:6
-included: myansibleissue01x/roles/dependency-or-standalone/tasks/main_run.yml for localhost
-
 TASK [dependency-or-standalone : debug]
 task path: myansibleissue01x/roles/dependency-or-standalone/tasks/main_run.yml:2
+ok: [localhost] => {
+    "msg": "in dependency-or-standalone"
+}
 
 TASK [dependency-or-standalone : set_fact]
 task path: myansibleissue01x/roles/dependency-or-standalone/tasks/main.yml:7
