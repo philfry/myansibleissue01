@@ -6,12 +6,12 @@
     server_roles:
       - role2
 
-  roles:
-    - role: dependency-or-standalone
+  tasks:
+    - include_role: name=dependency-or-standalone
       when: '"dependency-or-standalone" in server_roles|default([])'
 
-    - role: role1
+    - include_role: name=role1
       when: '"role1" in server_roles|default([])'
 
-    - role: role2
+    - include_role: name=role2
       when: '"role2" in server_roles|default([])'

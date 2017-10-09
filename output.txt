@@ -56,6 +56,9 @@ included: myansibleissue01x/roles/dependency-or-standalone/tasks/main_run.yml fo
 
 TASK [dependency-or-standalone : debug]
 task path: myansibleissue01x/roles/dependency-or-standalone/tasks/main_run.yml:2
+ok: [localhost] => {
+    "msg": "in dependency-or-standalone"
+}
 
 TASK [dependency-or-standalone : set_fact]
 task path: myansibleissue01x/roles/dependency-or-standalone/tasks/main.yml:7
@@ -82,5 +85,5 @@ META: ran handlers
 META: ran handlers
 
 PLAY RECAP
-localhost                  : ok=5    changed=0    unreachable=0    failed=0   
+localhost                  : ok=6    changed=0    unreachable=0    failed=0   
 
