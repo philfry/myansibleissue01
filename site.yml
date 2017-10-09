@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+
+  gather_facts: no
+  vars:
+    server_roles:
+      - role2
+
+  roles:
+    - role: dependency-or-standalone
+      when: '"dependency-or-standalone" in server_roles|default([])'
+
+    - role: role1
+      when: '"role1" in server_roles|default([])'
+
+    - role: role2
+      when: '"role2" in server_roles|default([])'

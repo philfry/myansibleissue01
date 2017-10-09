@@ -1,0 +1,11 @@
+---
+- name: "completed roles before run"
+  debug: var=dep_completed
+
+- block:
+  - include_tasks: main_run.yml
+  - set_fact: dep_completed=true
+  when: not dep_completed|default(false)
+
+- name: "completed roles after run"
+  debug: var=dep_completed
